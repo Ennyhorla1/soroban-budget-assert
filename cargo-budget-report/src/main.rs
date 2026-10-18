@@ -1253,7 +1253,7 @@ fn scaffold_init(force: bool, quiet: bool) -> Result<()> {
 /// Return every measured release-profile setting that differs from the
 /// workspace manifest. The values here must stay aligned with the profile
 /// documented in the README and reference guide.
-fn release_profile_deviations(manifest: &str) -> Result<Vec<String>, toml::de::Error> {
+fn release_profile_deviations(manifest: &str) -> std::result::Result<Vec<String>, toml::de::Error> {
     let manifest: toml::Value = toml::from_str(manifest)?;
     let release = manifest
         .get("profile")
